@@ -11,8 +11,8 @@ client.load_extension("cogs.commands")
 
 @client.event
 async def on_ready():
-    await client.change_presence(activity=discord.Game("Minecraft"))
-    print("{} has logged in.".format(client.user))
+   await client.change_presence(activity=discord.Game("Minecraft"))
+   print("{} has logged in.".format(client.user))
 
 
 @client.event
