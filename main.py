@@ -26,4 +26,11 @@ async def on_member_remove(member):
 async def gay(ctx):
    await ctx.send("Fajri is gay")
 
+@client.command()
+async def check(ctx):
+   embed = discord.Embed(title = "Parasite Eve", colour = discord.Colour(0x2eca6a))
+   embed.add_field(name="IP", value="play.parasiteeve.xyz", inline=True)
+   embed.add_field(name="Port", value="19132", inline=True)
+   await ctx.send(embed=embed)
+
 client.run(token)
