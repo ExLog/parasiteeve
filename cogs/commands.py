@@ -2,8 +2,8 @@ import discord
 from discord.ext import commands
 
 class Commands(commands.Cog):
-    def __init__(self, client):
-        self.client = client
+   def __init__(self, client):
+      self.client = client
 
 
    @commands.command()
@@ -11,11 +11,11 @@ class Commands(commands.Cog):
       await ctx.send("Fajri is gay")
 
    @commands.command()
-      async def check(self, ctx):
-         embed = discord.Embed(title = "Parasite Eve", colour = discord.Colour(0x2eca6a))
-         embed.add_field(name="IP", value="play.parasiteeve.xyz", inline=True)
-         embed.add_field(name="Port", value="19132", inline=True)
-         await ctx.send(embed=embed)
+   async def check(self, ctx):
+      embed = discord.Embed(title = "Parasite Eve", colour = discord.Colour(0x2eca6a))
+      embed.add_field(name="IP", value="play.parasiteeve.xyz", inline=True)
+      embed.add_field(name="Port", value="19132", inline=True)
+      await ctx.send(embed=embed)
 
    @commands.command()
    @commands.has_permissions(manage_messages=True)
