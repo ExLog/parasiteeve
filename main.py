@@ -1,10 +1,9 @@
 import discord
 from discord.ext import commands
-from os import getenv
 
-token = getenv('TOKEN')
-channel_id = int(getenv('CHANNEL'))
-prefix = getenv('PREFIX')
+token = "NzYxMjM0NjE1MzcyNzQyNjU2.X3Xo-w.u6FCFMfiTNonMf-7yi1yQesaisk"
+channel_id = 761972711551270952
+prefix = "."
 
 client = commands.Bot(prefix)
 
