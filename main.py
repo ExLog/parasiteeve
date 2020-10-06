@@ -3,7 +3,7 @@ from discord.ext import commands
 
 token = "NzYxMjM0NjE1MzcyNzQyNjU2.X3Xo-w.u6FCFMfiTNonMf-7yi1yQesaisk"
 channel_id = 761972711551270952
-prefix = "."
+prefix = "#"
 
 client = commands.Bot(prefix)
 
@@ -21,5 +21,9 @@ async def on_member_join(member):
 @client.event
 async def on_member_remove(member):
    await client.get_channel(channel_id).send(f"{member.name}#{member.discriminator} just left the server.")
+
+@client.command()
+async def gay(ctx):
+   await ctx.send("Fajri is gay")
 
 client.run(token)
