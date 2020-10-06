@@ -12,7 +12,7 @@ class Commands(commands.Cog):
 
    @commands.command()
    async def check(self, ctx):
-      embed = discord.Embed(title = "Parasite Eve", colour = discord.Colour(0x2eca6a))
+      embed = discord.Embed(title = "Parasite Eve", colour = discord.Colour(0x390c51))
       embed.add_field(name="IP", value="play.parasiteeve.xyz", inline=True)
       embed.add_field(name="Port", value="19132", inline=True)
       await ctx.send(embed=embed)
