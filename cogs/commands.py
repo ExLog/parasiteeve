@@ -2,7 +2,7 @@ import discord
 from config import *
 from discord.ext import commands
 
-exception = ["ExLog", "Doni", "Dony"]
+exception = ["exlog", "doni", "dony"]
 
 class Commands(commands.Cog):
    def __init__(self, client):
