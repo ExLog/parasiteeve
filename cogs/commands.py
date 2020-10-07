@@ -13,8 +13,9 @@ class Commands(commands.Cog):
    async def gay(self, ctx, username):
       if username in exception:
          await ctx.send("no u")
-         await ctx.send(f"{ctx.message.author} is gay")
-      await ctx.send(f"{username} is gay")
+         await ctx.send(f"{ctx.name} is gay")
+      else:
+         await ctx.send(f"{username} is gay")
 
    @commands.command()
    async def check(self, ctx):
