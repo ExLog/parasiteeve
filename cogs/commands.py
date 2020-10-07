@@ -2,14 +2,19 @@ import discord
 from config import *
 from discord.ext import commands
 
+exception = ["ExLog", "exlog", "doni", "dony"]
+
 class Commands(commands.Cog):
    def __init__(self, client):
       self.client = client
 
 
    @commands.command()
-   async def gay(self, ctx):
-      await ctx.send("Fajri is gay")
+   async def gay(self, ctx, username):
+      if username in exception:
+         await ctx.send("no u")
+         await ctx.send(f"{ctx.message.author} is gay")
+      await ctx.send(f"{username} is gay")
 
    @commands.command()
    async def check(self, ctx):
