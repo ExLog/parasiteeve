@@ -5,8 +5,8 @@ from discord.ext import commands
 exception = ["exlog", "doni", "dony"]
 
 class Commands(commands.Cog):
-   def __init__(self, client):
-      self.client = client
+   def __init__(self, bot):
+      self.bot = bot
 
 
    @commands.command()
@@ -39,6 +39,6 @@ class Commands(commands.Cog):
          await ctx.send("Please specify an amount of messages to delete.")
 
 
-def setup(client):
-   client.add_cog(Commands(client))
+def setup(bot):
+   bot.add_cog(Commands(bot))
          

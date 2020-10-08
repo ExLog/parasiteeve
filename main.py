@@ -5,6 +5,10 @@ from discord.ext import commands
 
 bot = commands.Bot(prefix)
 
+startup_extension = ("cogs.commands",)
+for ext in startup_extension:
+    bot.load_extension(ext)
+
 #bot events
 @bot.event
 async def on_ready():
