@@ -53,7 +53,7 @@ async def on_member_join(member):
     for guild_id in bot.welcome_channels:
         if guild_id == member.guild.id:
             channel_id, message = bot.welcome_channels[guild_id]
-            await bot.get_guild(guild_id).get_channel(channel_id).send(f"{member.mention} {message} ")
+            await bot.get_guild(guild_id).get_channel(channel_id).send(f"{message} {member.mention} Welcome to **{member.guild.name}**! Please read <#728879463156285471> and react to get role. ")
             return
 
 @bot.event
@@ -61,7 +61,7 @@ async def on_member_remove(member):
     for guild_id in bot.goodbye_channels:
         if guild_id == member.guild.id:
             channel_id, message = bot.goodbye_channels[guild_id]
-            await bot.get_guild(guild_id).get_channel(channel_id).send(f"{message} {member.mention} Welcome to **{member.guild.name}**! Please read <#728879463156285471> and react to get role.")
+            await bot.get_guild(guild_id).get_channel(channel_id).send(f"{member.mention} {message}")
             return
 
 #bot commands
