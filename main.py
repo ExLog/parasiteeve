@@ -2,8 +2,8 @@ from config import *
 import discord
 import aiofiles
 from discord.ext import commands
-
-bot = commands.Bot(prefix)
+intents = discord.Intents(messages=True, guilds=True)
+bot = commands.Bot(prefix, intents=intents)
 
 startup_extension = ("cogs.commands",)
 for ext in startup_extension:
