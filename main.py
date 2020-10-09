@@ -3,8 +3,6 @@ import discord
 import aiofiles
 from discord.ext import commands
 intents = discord.Intents.default()
-intents.typing = False
-intents.presences = False
 intents.members = True
 bot = commands.Bot(prefix, intents=intents)
 
