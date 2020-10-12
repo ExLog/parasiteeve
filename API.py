@@ -1,10 +1,12 @@
 import json
 import requests
-from API_KEY import SERVER_API_KEY
+import os
+from config import *
+
 try:
     website_status = True
-    # Change your SERVER_API_KEY to your own Server Key.
-    api_request = requests.get(f"https://minecraftpocket-servers.com/api/?object=servers&element=detail&key={SERVER_API_KEY}")
+    api_request = requests.get(
+        f"https://minecraftpocket-servers.com/api/?object=servers&element=detail&key={Server_Key_API}")
     api = json.loads(api_request.content)
     server_name = api["name"]
     ip = api["address"]

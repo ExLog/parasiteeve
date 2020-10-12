@@ -1,9 +1,12 @@
 # Python IDEA Files and cache
+.idea/
 .idea/*
 __pycache__/
 
-# API_KEY
-API_KEY.py
 
 # Node_modules
 node_modules/
+
+
+# Environment Files
+.env

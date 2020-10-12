@@ -1,3 +1,4 @@
+from config import *
 import os
 import sys
 
@@ -5,7 +6,7 @@ import discord
 from discord.ext import commands
 
 sys.path.append(os.path.abspath(os.path.join('/')))
-from API import *
+
 
 class Commands(commands.Cog):
     def __init__(self, bot):
@@ -13,15 +14,17 @@ class Commands(commands.Cog):
 
     @commands.command()
     async def check(self, ctx):
-       if website_status == True:
-          embed = discord.Embed(title=server_name, colour=discord.Colour(0x390c51))
-          embed.add_field(name="IP", value=ip, inline=True)
-          embed.add_field(name="Port", value=port, inline=True)
-          embed.add_field(name="Players Online", value=online_now, inline=False)
-          embed.set_footer(text=last_check)
-          await ctx.send(embed=embed)
-       else:
-          await ctx.send("The API is not Available")
+        if website_status == True:
+            embed = discord.Embed(
+                title=server_name, colour=discord.Colour(0x390c51))
+            embed.add_field(name="IP", value=ip, inline=True)
+            embed.add_field(name="Port", value=port, inline=True)
+            embed.add_field(name="Players Online",
+                            value=online_now, inline=False)
+            embed.set_footer(text=last_check)
+            await ctx.send(embed=embed)
+        else:
+            await ctx.send("The API is not Available")
 
     @commands.command()
     @commands.has_permissions(manage_messages=True)
