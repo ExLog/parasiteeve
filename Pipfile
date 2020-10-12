@@ -8,10 +8,10 @@ verify_ssl = true
 [packages]
 discord-py = "*"
 aiofiles = "*"
+requests = "*"
 
 [requires]
 python_version = "3.9"
 
 [scripts]
-
 dev = "nodemon --exec python main.py"

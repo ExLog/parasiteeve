@@ -10,7 +10,7 @@ startup_extension = ("cogs.commands",)
 for ext in startup_extension:
     bot.load_extension(ext)
 
-#bot events
+# bot events
 @bot.event
 async def on_ready():
     print("Your bot is ready.")
