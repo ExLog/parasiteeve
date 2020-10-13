@@ -1,11 +1,7 @@
 from config import *
-import os
-import sys
 
 import discord
 from discord.ext import commands
-
-sys.path.append(os.path.abspath(os.path.join('/')))
 
 
 class Commands(commands.Cog):
@@ -14,6 +10,21 @@ class Commands(commands.Cog):
 
     @commands.command()
     async def check(self, ctx):
+        try:
+            website_status = True
+            # Change your SERVER_API_KEY to your own Server Key.
+            api_request = requests.get(
+                f"https://minecraftpocket-servers.com/api/?object=servers&element=detail&key={Server_Key_API}")
+            api = json.loads(api_request.content)
+            server_name = api["name"]
+            ip = api["address"]
+            port = api["port"]
+            rank = api["rank"]
+            online_now = api["is_online"]
+            last_check = api["last_check"]
+        except Exception:
+            website_status = False
+
         if website_status == True:
             embed = discord.Embed(
                 title=server_name, colour=discord.Colour(0x390c51))
