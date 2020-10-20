@@ -1,6 +1,9 @@
-from config import *
+import json
 
+import aiofiles
+from config import *
 import discord
+import requests
 from discord.ext import commands
 
 
@@ -46,6 +49,46 @@ class Commands(commands.Cog):
     async def on_command_error(self, ctx, error):
         if isinstance(error, commands.MissingPermissions):
             await ctx.send("You don't have permission to do the command!")
+
+    @commands.command()
+    @commands.has_permissions(administrator=True)
+    async def setwelcome(self, ctx, new_channel: discord.TextChannel = None, *, message="Messages"):
+        if new_channel is not None and message is not None:
+            for channel in ctx.guild.channels:
+                if channel == new_channel:
+                    self.bot.welcome_channels[ctx.guild.id] = (
+                        channel.id, message)
+                    await ctx.channel.send(f"Welcome channel has been set to : {channel.name}")
+
+                    async with aiofiles.open("./welcome.txt", mode="a") as file:
+                        await file.write(f"{ctx.guild.id} {new_channel.id} {message}\n")
+
+                    return
+
+            await ctx.channel.send("Couldn't find the given channel.")
+
+        else:
+            await ctx.channel.send("You didn't include the name of a welcome channel or a welcome message.")
+
+    @commands.command()
+    @commands.has_permissions(administrator=True)
+    async def setgoodbye(self, ctx, new_channel: discord.TextChannel = None, *, message="Messages"):
+        if new_channel is not None and message is not None:
+            for channel in ctx.guild.channels:
+                if channel == new_channel:
+                    self.bot.goodbye_channels[ctx.guild.id] = (
+                        channel.id, message)
+                    await ctx.channel.send(f"Goodbye channel has been set to : {channel.name}")
+
+                    async with aiofiles.open("./goodbye.txt", mode="a") as file:
+                        await file.write(f"{ctx.guild.id} {new_channel.id} {message}\n")
+
+                    return
+
+            await ctx.channel.send("Couldn't find the given channel.")
+
+        else:
+            await ctx.channel.send("You didn't include the name of a goodbye channel or a goodbye message.")
 
     @clear.error
     async def clear_error(self, ctx, error):

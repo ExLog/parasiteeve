@@ -1,4 +1,4 @@
-from API import *
+import os
 # Get variables from .env
 token = os.getenv('TOKEN')
 prefix = os.getenv('PREFIX')
