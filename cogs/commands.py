@@ -1,9 +1,9 @@
 import json
 
 import aiofiles
-from config import *
 import discord
 import requests
+from config import *
 from discord.ext import commands
 
 
@@ -11,6 +11,7 @@ class Commands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    # Server API
     @commands.command()
     async def check(self, ctx):
         try:
@@ -18,17 +19,17 @@ class Commands(commands.Cog):
             # Change your SERVER_API_KEY to your own Server Key.
             api_request = requests.get(
                 f"https://minecraftpocket-servers.com/api/?object=servers&element=detail&key={Server_Key_API}")
-            api = json.loads(api_request.content)
-            server_name = api["name"]
-            ip = api["address"]
-            port = api["port"]
-            rank = api["rank"]
-            online_now = api["is_online"]
-            last_check = api["last_check"]
+            api_server = json.loads(api_request.content)
+            server_name = api_server["name"]
+            ip = api_server["address"]
+            port = api_server["port"]
+            rank = api_server["rank"]
+            online_now = api_server["is_online"]
+            last_check = api_server["last_check"]
         except Exception:
             website_status = False
 
-        if website_status == True:
+        if website_status:
             embed = discord.Embed(
                 title=server_name, colour=discord.Colour(0x390c51))
             embed.add_field(name="IP", value=ip, inline=True)
@@ -38,7 +39,29 @@ class Commands(commands.Cog):
             embed.set_footer(text=last_check)
             await ctx.send(embed=embed)
         else:
-            await ctx.send("The API is not Available")
+            await ctx.send("The API is not available")
+
+    @commands.command()
+    async def vote(self, ctx):
+        try:
+            website_status = True
+            api_request_vote = requests.get(
+                f"https://minecraftpocket-servers.com/api/?object=servers&element=voters&key={Server_Key_API}&month=current&format=json")
+            api_vote = json.loads(api_request_vote.content)
+            server_name = api_vote["name"]
+            api_voters_list = api_vote["voters"]
+            voters_list = ["{nickname} : {votes}".format(**voter) for voter in api_voters_list]
+            voters_list = "\n".join(voters_list)
+        except:
+            website_status = False
+
+        if website_status == True:
+            embed = discord.Embed(title=server_name, colour=discord.Colour(0x390c51))
+            embed.add_field(name="Voters List", value=voters_list, inline=False)
+            await ctx.send(embed=embed)
+        else:
+            await ctx.send("The API is not available")
+
 
     @commands.command()
     @commands.has_permissions(manage_messages=True)
