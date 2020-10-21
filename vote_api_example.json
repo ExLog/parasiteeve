@@ -1,0 +1,16 @@
+{
+    "name": "Parasite Eve",
+    "address": "play.parasiteeve.xyz",
+    "port": "19132",
+    "month": "202010",
+    "voters": [
+        {
+            "nickname": "FajriGay",
+            "votes": "1"
+        },
+        {
+            "nickname": "Test2",
+            "votes": "1"
+        }
+    ]
+}
