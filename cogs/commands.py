@@ -31,12 +31,15 @@ class Commands(commands.Cog):
 
         if website_status:
             embed = discord.Embed(
-                title=server_name, colour=discord.Colour(0x390c51))
+                title="Server Stats", colour=discord.Colour(0x390c51))
             embed.add_field(name="IP", value=ip, inline=True)
             embed.add_field(name="Port", value=port, inline=True)
             embed.add_field(name="Players Online",
                             value=online_now, inline=False)
             embed.set_footer(text=last_check)
+            embed.set_author(name="Parasite Eve", icon_url="https://cdn.discordapp.com/avatars/761234615372742656/b3fa882df00c2c4ae19f28be369c0ecb.webp?size=256")
+            embed.set_thumbnail(
+                url="https://cdn.discordapp.com/avatars/761234615372742656/b3fa882df00c2c4ae19f28be369c0ecb.webp?size=256")
             await ctx.send(embed=embed)
         else:
             await ctx.send("The API is not available")
@@ -55,9 +58,16 @@ class Commands(commands.Cog):
         except:
             website_status = False
 
-        if website_status == True:
-            embed = discord.Embed(title=server_name, colour=discord.Colour(0x390c51))
-            embed.add_field(name="Voters List", value=voters_list, inline=False)
+        if website_status:
+            embed = discord.Embed(
+                title="Voters List", colour=discord.Colour(0x390c51))
+            embed.add_field(name="Voters List",
+                            value=voters_list, inline=False)
+            embed.set_author(
+                name="Parasite Eve",
+                icon_url="https://cdn.discordapp.com/avatars/761234615372742656/b3fa882df00c2c4ae19f28be369c0ecb.webp?size=256")
+            embed.set_thumbnail(
+                url="https://cdn.discordapp.com/avatars/761234615372742656/b3fa882df00c2c4ae19f28be369c0ecb.webp?size=256")
             await ctx.send(embed=embed)
         else:
             await ctx.send("The API is not available")
